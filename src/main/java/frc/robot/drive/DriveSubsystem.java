@@ -32,7 +32,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public DriveSubsystem() {
     try {
-      swerve = new SwerveParser(new File(Filesystem.getDeployDirectory(), "swerve")).createSwerveDrive();
+      swerve = new SwerveParser(new File(Filesystem.getDeployDirectory(), "swerve")).createSwerveDrive(Constants.Drive.MAXIMUM_VELOCITY);
     } catch (IOException e) {
       System.out.println("Swerve drive configuration file could not be found at " + Filesystem.getDeployDirectory() + "/swerve");
       e.printStackTrace();
