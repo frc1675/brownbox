@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.math.util.Units;
+
 public class Constants {
 
     public class Drive {
@@ -7,6 +9,12 @@ public class Constants {
         public static final double MAXIMUM_ANGULAR_VELOCITY = 15.5; //radians per second
 
         public static final double MAXIMUM_VISON_POSE_OVERRIDE_DISTANCE = 1.0; //meters
+
+        public static final double DRIVE_GEAR_RATIO = 6.12;
+        public static final double STEER_GEAR_RATIO = 12.8;
+        public static final double PULSE_PER_ROTATION = 42; //encoder resolution
+        public static final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(4);
+
     }
 
     public class PathPlanner {
