@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.util.UperTunerSendable;
 import swervelib.SwerveDrive;
+import swervelib.math.SwerveMath;
 import swervelib.parser.SwerveParser;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -32,7 +33,11 @@ public class DriveSubsystem extends SubsystemBase {
 
   public DriveSubsystem() {
     try {
-      swerve = new SwerveParser(new File(Filesystem.getDeployDirectory(), "swerve")).createSwerveDrive(Constants.Drive.MAXIMUM_VELOCITY);
+      swerve = new SwerveParser(new File(Filesystem.getDeployDirectory(), "swerve")).createSwerveDrive(
+        Constants.Drive.MAXIMUM_VELOCITY, 
+        SwerveMath.calculateDegreesPerSteeringRotation(Constants.Drive.STEER_GEAR_RATIO, Constants.Drive.PULSE_PER_ROTATION), 
+        SwerveMath.calculateMetersPerRotation( Constants.Drive.WHEEL_DIAMETER_METERS, Constants.Drive.DRIVE_GEAR_RATIO, Constants.Drive.PULSE_PER_ROTATION)
+      );
     } catch (IOException e) {
       System.out.println("Swerve drive configuration file could not be found at " + Filesystem.getDeployDirectory() + "/swerve");
       e.printStackTrace();
