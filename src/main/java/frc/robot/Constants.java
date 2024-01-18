@@ -18,11 +18,15 @@ public class Constants {
     }
 
     public class PathPlanner {
+        //TODO tune constants if necessary
         public static final double MAXIMUM_VELOCITY= 5.0; //meters per second
         public static final double MAXIMUM_ACCELERATON = 2.0; //meters per second squared
 
         public static final double MAXIMUM_ANGULAR_VELOCITY = 15.0; //radians per second
         public static final double MAXIMUM_ANGULAR_ACCELERATION = 5.0; //radians per second squared
+
+        //TODO measure on robot
+        public static final double DRIVEBASE_RADIUS = Units.inchesToMeters(13.7885); //meters
         
     }
 
