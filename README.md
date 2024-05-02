@@ -6,7 +6,7 @@ It can also be used as a prototyping testbed by making a new branch and working 
 It should not be used as a direct template for a robot project necessarily.
 Copy/pasting entire classes from this repository to UPS robot projects is the currently intended use case of the code stored here.
 
-`brownbook` should be updated/retrofitted each year as the new WPILib is released, if necessary.
+`brownbox` should be updated/retrofitted each year as the new WPILib is released, if necessary.
 
 ## Evergreen Classes
 
