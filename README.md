@@ -21,3 +21,7 @@ Code going into the `frc.robot.brownbox` package should satisfy the following st
 * Classes should be unit tested if the intended behavior of the code is not immediately apparent when reading.
     * Unit tests should be carried to robot projects with any classes that have them for confidence and ability to modify in-season if need arises.
 * Code should be reviewed by at least one mentor and pass all CI checks.
+
+## Other stuff in brownbox
+
+Everything not in the `frc.robot.brownbox` package should facilitate a quick/easy jump-off point for testing new ideas in a robot code project for testing in simulator. Large features are ideally toggleable via commenting a few lines in as few places as possible.
