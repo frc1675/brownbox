@@ -101,3 +101,79 @@ wpi.java.configureTestTasks(test)
 tasks.withType(JavaCompile) {
     options.compilerArgs.add '-XDstringConcat=inline'
 }
+
+// -------------------------
+// --- Additions by 1675 ---
+// -------------------------
+
+// Configure spotless for styling and checks
+spotless {
+    enforceCheck = false
+    java {
+        target fileTree('.') {
+            include '**/*.java'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        toggleOffOn()
+        palantirJavaFormat()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    groovyGradle {
+        target fileTree('.') {
+            include '**/*.gradle'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        greclipse()
+        indentWithSpaces(4)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    format 'xml', {
+        target fileTree('.') {
+            include '**/*.xml'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        eclipseWtp('xml')
+        trimTrailingWhitespace()
+        indentWithSpaces(2)
+        endWithNewline()
+    }
+    format 'misc', {
+        target fileTree('.') {
+            include '**/*.md', '**/.gitignore'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        trimTrailingWhitespace()
+        indentWithSpaces(2)
+        endWithNewline()
+    }
+}
+
+// Configure gversion for generating build/git info
+// Credit to 2024 group led by Michael S for writing a standalong implementation before we learned about the gradle plugin
+gversion {
+    srcDir       = "src/main/java/"
+    classPackage = "frc.robot.generated.git"
+    className    = "BuildGitInfo"
+    dateFormat   = "yyyy-MM-dd HH:mm:ss z"
+    timeZone     = "America/Chicago"
+    indent       = "    "
+}
+
+// Installs/updates git hook on build
+// Credit to Michael S 2024 for coming up with git hook idea to enforce spotless
+task installLocalGitHook(type: Copy){
+    from new File(rootProject.rootDir, 'scripts/pre-commit')
+    into { new File(rootProject.rootDir, '.git/hooks')}
+    fileMode 0775
+}
+
+// Set up custom task dependencies
+
+// install local git hooks on build
+build.dependsOn installLocalGitHook
+
+// create git info file before compile
+compileJava.dependsOn createVersionFile
