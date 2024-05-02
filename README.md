@@ -2,7 +2,7 @@
 
 `brownbox` is intended to be a storage place to maintain evergreen UPS control components.
 
-It can also be used as a prototyping testbed by making a new branch and working from there. 
+It can also be used as a prototyping testbed by making a new branch and working from there.
 It should not be used as a direct template for a robot project necessarily.
 Copy/pasting entire classes from this repository to UPS robot projects is the currently intended use case of the code stored here.
 
@@ -10,7 +10,7 @@ Copy/pasting entire classes from this repository to UPS robot projects is the cu
 
 ## Evergreen Classes
 
-UPS evergreen classes are at `src/main/java/frc/robot/brownbox`. 
+UPS evergreen classes are at `src/main/java/frc/robot/brownbox`.
 In all UPS robot projects, the `frc.robot.brownbox` package should be reserved for code coming from this repository or code intended to be integrated back into `brownbox` at the end of the season.
 
 Code going into the `frc.robot.brownbox` package should satisfy the following standards:
